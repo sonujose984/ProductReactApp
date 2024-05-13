@@ -23,39 +23,41 @@ const ProductPage = ({ products, loading, error, fetchProducts }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ backgroundColor: "lightgrey" }}>
       <h1>Products</h1>
-      {loading ? (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      ) : error ? (
-        <div>Error: {error.message}</div>
-      ) : (
-        <div className="row">
-          {products.map((product, index) => (
-            <div key={product.id} className={`col-md-4 ${index % 3 !== 0 ? 'mb-4' : ''}`}>
-              <div className="card">
-                <img src={product.image} className="card-img-top" alt={product.title} />
-                <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <p className="card-text">Price: ${product.price}</p>
-                  <p className="card-text">Category: {product.category}</p>
-                  {expandedDescriptions.includes(product.id) ? (
-                    <p className="card-text">{product.description}</p>
-                  ) : (
-                    <p className="card-text">{product.description.slice(0, 100)}...</p>
-                  )}
-                  <button className="btn btn-primary" onClick={() => toggleDescription(product.id)}>
-                    {expandedDescriptions.includes(product.id) ? 'View Less' : 'View More'}
-                  </button>
+      {
+        loading ? (
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <div className="row">
+            {products.map((product, index) => (
+              <div key={product.id} className={`col-md-4 ${index % 3 !== 0 ? 'mb-4' : ''}`}>
+                <div className="card">
+                  <img src={product.image} className="card-img-top" alt={product.title} />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.title}</h5>
+                    <p className="card-text">Price: ${product.price}</p>
+                    <p className="card-text">Category: {product.category}</p>
+                    {expandedDescriptions.includes(product.id) ? (
+                      <p className="card-text">{product.description}</p>
+                    ) : (
+                      <p className="card-text">{product.description.slice(0, 100)}...</p>
+                    )}
+                    <button className="btn btn-primary" onClick={() => toggleDescription(product.id)}>
+                      {expandedDescriptions.includes(product.id) ? 'View Less' : 'View More'}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        )
+      }
+    </div >
   );
 };
 

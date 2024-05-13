@@ -1,15 +1,6 @@
 [
-    {
-      "username": "pooja",
-      "password": "pooja123"
-    },
-    {
-      "username": "admin",
-      "password": "123"
-    },
-    {
-      "username": "user",
-      "password": "user123"
-    }
-  ]
-  
+  {
+    "username": "admin",
+    "password": "123"
+  }
+]
